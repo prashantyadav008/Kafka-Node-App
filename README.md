@@ -4,9 +4,17 @@
 
 This project demonstrates how to use **Apache Kafka** with NodeJS using KafkaJS. It includes examples of Kafka **Producer**, **Consumer**, and **Admin** operations with Docker-based Kafka setup.
 
-## Video Demonstration
+### Running Producer with different partitions
 
-[Watch the setup and demonstration video here](https://github.com/prashantyadav008/Kafka-Node-App/blob/kafka_setup/Working-Flow-of-Kafka-using-Nodejs.mp4)
+![image](https://github.com/prashantyadav008/Kafka-Node-App/blob/main/assets/Screenshot%20from%202025-04-16%2019-21-51.png)
+
+### Running Consumer with different partitions
+
+![image](https://github.com/prashantyadav008/Kafka-Node-App/blob/main/assets/Screenshot%20from%202025-04-16%2019-21-22.png)
+
+### Demonstration Video
+
+[Watch the setup and demonstration video here](https://github.com/prashantyadav008/Kafka-Node-App/blob/main/assets/kafka_setup/Working-Flow-of-Kafka-using-Nodejs.mp4)
 
 <br>
 
@@ -193,3 +201,5 @@ node consumer.js user-1  # Reads from another partition
 ```
 
 Kafka will load balance messages across these consumers.
+
+##
