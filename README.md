@@ -71,6 +71,12 @@ Example .env file:
 PRIVATE_IP=192.168.10.15
 ```
 
+🛠️ Get Private IP Address
+
+```bash
+ifconfig
+```
+
 ### 2. Run Zookeeper (required for Kafka)
 
 ```bash
