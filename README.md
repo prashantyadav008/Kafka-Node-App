@@ -80,7 +80,7 @@ ifconfig
 ### 2. Run Zookeeper (required for Kafka)
 
 ```bash
-docker run -d --name zookeeper -p2181:2181 zookeeper
+docker run -p 2181:2181 zookeeper
 ```
 
 🐵 **Zookeeper** is used by Kafka to coordinate brokers, maintain configuration info, and manage leader election for partitions.
@@ -88,7 +88,7 @@ docker run -d --name zookeeper -p2181:2181 zookeeper
 ### 3. Run Kafka Broker
 
 ```bash
-docker run -d --name kafka -p9092:9092 \
+docker run -p 9092:9092 \
 -e KAFKA_ZOOKEEPER_CONNECT=<PRIVATE_IP>:2181 \
 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://<PRIVATE_IP>:9092 \
 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 \
