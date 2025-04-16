@@ -79,16 +79,32 @@ ifconfig
 
 ### 2. Run Zookeeper (required for Kafka)
 
+**Apache ZooKeeper** is used by Kafka to coordinate brokers, maintain configuration info, and manage leader election for partitions. ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and group services. In the context of Kafka, ZooKeeper plays a crucial role in managing and coordinating the **Kafka brokers**.
+
 ```bash
-docker run -d --name zookeeper -p2181:2181 zookeeper
+docker run -p 2181:2181 zookeeper
 ```
 
-🐵 **Zookeeper** is used by Kafka to coordinate brokers, maintain configuration info, and manage leader election for partitions.
+🔧 Role of ZooKeeper in Kafka:
+
+- `Cluster Management`: Keeps track of the status of Kafka brokers (nodes) in the cluster.
+
+- `Leader Election`: Manages the election of a controller broker responsible for administrative operations.
+
+- `Metadata Management`: Stores metadata about topics, partitions, and their configurations.
+
+- `Configuration Management`: Maintains configuration information for Kafka topics and brokers.
+
+- `Access Control`: Stores Access Control Lists (ACLs) for managing permissions.
+
+**Note**: Starting from Kafka version 2.8.0, Kafka can be run without ZooKeeper using the KRaft mode. However, ZooKeeper is still widely used in many production environments.
 
 ### 3. Run Kafka Broker
 
+**Kafka brokers** are responsible for storing and processing messages, and they coordinate the distribution of messages between consumers and producers. And each broker can handle thousands of reads and writes per second and can manage multiple partitions of multiple topics.
+
 ```bash
-docker run -d --name kafka -p9092:9092 \
+docker run -p 9092:9092 \
 -e KAFKA_ZOOKEEPER_CONNECT=<PRIVATE_IP>:2181 \
 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://<PRIVATE_IP>:9092 \
 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 \
@@ -96,9 +112,21 @@ docker run -d --name kafka -p9092:9092 \
 confluentinc/cp-kafka
 ```
 
-🐘 **Kafka brokers** are responsible for storing and processing messages, and they coordinate the distribution of messages between consumers and producers.
+🛠 Responsibilities of a Kafka Broker:
 
-🧠 Command Explanation:
+- `Message Storage`: Stores messages for topics and partitions.
+
+- `Message Serving`: Serves incoming messages to consumers.
+
+- `Load Balancing`: Distributes messages to consumers in a consumer group.
+
+- `Replication`: Ensures data is replicated across multiple brokers for fault tolerance.
+
+- `Metadata Handling`: Provides metadata information to clients (producers and consumers) about the Kafka cluster.
+
+**Example**: In a Kafka cluster with three brokers, each broker might handle different partitions of a topic, ensuring scalability and fault tolerance.
+
+🧠 **Command Explanation**:
 
 - `KAFKA_ZOOKEEPER_CONNECT`: Kafka connects to Zookeeper
 
