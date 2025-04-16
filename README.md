@@ -8,7 +8,7 @@ This project demonstrates how to use **Apache Kafka** with NodeJS using KafkaJS.
 
 [Watch the setup and demonstration video here](https://github.com/prashantyadav008/Kafka-Node-App/blob/kafka_setup/Working-Flow-of-Kafka-using-Nodejs.mp4)
 
-<br><hr><br>
+<br>
 
 ---
 
